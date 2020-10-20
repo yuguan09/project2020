@@ -1,0 +1,132 @@
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{verbatim}
+\tikzstyle{block} = [draw, fill=white, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amsthm}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{制御工学３レポート１	}
+	\author{BQ18026，関宇 }
+	\date{Oct.20，2020}
+	
+	
+\begin{document}
+		\maketitle
+		
+		
+		
+	\section{上で示した$ e^{At} $の性質のうち、b)を証明せよ}
+	
+	b)式より、
+	
+	\begin{equation}
+	    \frac{d}{dt}e^{At}=Ae^{At}=e^{At}A
+	\end{equation}
+	
+	ここで、三次元の行列指数関数を考える.
+	
+	\begin{equation}
+	    e^{At}={
+\left[ \begin{array}{ccc}
+e^{a_{1}t}&&\\
+&e^{a_{2}t}&\\
+&&e^{a_{3}t}
+\end{array}
+\right ]},A={
+\left[ \begin{array}{ccc}
+a_{1}t&&\\
+&a_{2}t&\\
+&&a_{3}t
+\end{array}
+\right ]}
+	\end{equation}
+	
+	
+	\begin{equation}
+	    \frac{d}{df}e^{At}={
+\left[ \begin{array}{ccc}
+a_{1}e^{a_{1}t}&&\\
+&a_{2}e^{a_{2}t}&\\
+&&a_{3}e^{a_{3}t}
+\end{array}
+\right ]}
+	\end{equation}
+	
+	\begin{equation}
+	    ={
+\left[ \begin{array}{ccc}
+a_{1}t&&\\
+&a_{2}t&\\
+&&a_{3}t
+\end{array}
+\right ]}{
+\left[ \begin{array}{ccc}
+e^{a_{1}t}&&\\
+&e^{a_{2}t}&\\
+&&e^{a_{3}t}
+\end{array}
+\right ]}=Ae^{At}
+	\end{equation}
+	
+	特に
+	
+	\begin{equation}
+	    e^{At}A={
+\left[ \begin{array}{ccc}
+e^{a_{1}t}&&\\
+&e^{a_{2}t}&\\
+&&e^{a_{3}t}
+\end{array}
+\right ]}{
+\left[ \begin{array}{ccc}
+a_{1}t&&\\
+&a_{2}t&\\
+&&a_{3}t
+\end{array}
+\right ]}={
+\left[ \begin{array}{ccc}
+a_{1}e^{a_{1}t}&&\\
+&a_{2}e^{a_{2}t}&\\
+&&a_{3}e^{a_{3}t}
+\end{array}
+\right ]}
+	\end{equation}
+	
+	よって、性質ｂが証明できる。
+	
+	
+	
+
+
+
+
+	
+	
+\end{document}
