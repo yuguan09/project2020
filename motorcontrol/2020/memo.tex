@@ -1,0 +1,144 @@
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{verbatim}
+\tikzstyle{block} = [draw, fill=white, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amsthm}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{追加課題1}
+	\author{bq18026\\001010001011110000010100001101000001100000000100\footnote{今年から木村研に所属するので、たくさん暗号に関することが勉強しています．氏名も適当に暗号化しました．}}
+	\date{07.11，2020}
+	
+	
+\begin{document}
+\maketitle
+
+\section{PID制御系}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{a.jpg}
+    \caption{PID制御系}
+\end{figure}
+
+簡単のため、モータ系の伝達関数をP(s),PIDコントローラーの伝達関数をK(s)とする．\\
+
+\subsection{}
+素直な考え方、出力yは外乱入力dと目標値入力rにおけるそれぞれのフィードバック系の組み合わせによって構成されている．なので、
+
+\begin{equation}
+    y=G_{r}(s)r+G_{d}(s)
+\end{equation}
+
+\begin{equation}
+    y=r\frac{K(s)P(s)}{1+K(s)P(s)}+d\frac{P(s)}{1+K(s)P(s)}
+\end{equation}
+
+\begin{equation}
+    y=r\cdot\frac{(K_{P}+\frac{K_{I}}{s}+K_{D}s)\frac{K}{(s^{2}T+1)}}{1+\frac{(K_{P}+\frac{K_{I}}{s}+K_{D}s)K}{(s^{2}T+1)}}+w\cdot\frac{\frac{K}{s(Ts+1)}}{1+\frac{K(K_{P}+\frac{K_{I}}{s}+K_{D}s)}{s(Ts+1)}}
+\end{equation}
+	
+	\begin{equation}
+	    =\frac{KK_{P}+\frac{KK_{I}}{s}+KK_{D}s}{s^{2}T+s+KK_{P}+\frac{KK_{I}}{s}+KK_{D}s}\cdot r+\frac{K}{s^{2}T+s+KK_{P}+\frac{KK_{I}}{s}+KK_{D}s}\cdot d
+	\end{equation}
+	
+	\begin{equation}
+	    =\frac{s^{2}KK_{D}+sKK_{p}+KK_{I}}{s^{3}T+s^{2}(1+KK_{D})+sKK_{p}+KK_{I}}\cdot r+\frac{Ks}{s^{3}T+s^{2}(1+KK_{D})+sKK_{p}+KK_{I}}\cdot d
+	\end{equation}
+	
+	
+	\section{PD-I制御系}
+	
+	\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{b.jpg}
+    \caption{PD-I制御系}
+\end{figure}
+
+(1) と同じように考えると、まず外乱ｄに対するフィードバック系の伝達関数G1(s)を求める．
+
+\begin{equation}
+    G_{1}(s)=\frac{\frac{K}{s(Ts+1)}}{1+\frac{KK_{p}s}{s(Ts+1)}}=\frac{K}{s^{2}T+(1+KK_{P})s}
+\end{equation}
+
+式２と同じく
+
+\begin{equation}
+    y=\frac{K(s)G_{1}(s)}{1+K(s)G_{1}(s)}\cdot r+\frac{G_{1}(s)}{1+K(s)G_{1}(s)}\cdot d
+\end{equation}
+
+\begin{equation}
+    =\frac{(K_{P}+\frac{K_{I}}{s})\cdot\frac{K}{s^{2}T+(1+KK_{P})s}}{1+(K_{P}+\frac{K_{I}}{s})\cdot\frac{K}{s^{2}T+(1+KK_{P})s}}\cdot r+\frac{K}{1+(K_{P}+\frac{K_{I}}{s})\cdot\frac{K}{s^{2}T+(1+KK_{P})s}}\cdot d
+\end{equation}
+
+\begin{equation}
+    =\frac{KK_{P}+\frac{KK_{I}}{s}}{s^{2}T+(1+KK_{P})s+KK_{P}+\frac{KK_{I}}{s}}\cdot r+\frac{Ks}{s^{2}T+(1+KK_{P})s+KK_{P}+\frac{KK_{I}}{s}}\cdot d
+\end{equation}\\
+
+最後に、分子と分母を共にｓをかける．
+
+\begin{equation}
+    y=\frac{sKK_{p}+KK_{I}}{s^{3}T+s^{2}(1+KK_{D})+sKK_{p}+KK_{I}}\cdot r+\frac{Ks}{s^{3}T+s^{2}(1+KK_{D})+sKK_{p}+KK_{I}}\cdot d
+\end{equation}
+
+\newpage
+
+\section{I-PD制御}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{c.jpg}
+    \caption{I-PD制御}
+\end{figure}
+
+２とまった同じく手順で考える.まず外乱ｄに対するフィードバック系の伝達関数G1(s)を求める．
+
+\begin{equation}
+    G_{1}(s)=\frac{K}{s^{2}T+(KK_{D}+1)s+KK_{P}}
+\end{equation}
+
+式２と同じように
+
+\begin{equation}
+    y=\frac{K(s)G_{1}(s)}{1+K(s)G_{1}(s)}\cdot r+\frac{G_{1}(s)}{1+K(s)G_{1}(s)}\cdot d
+    \end{equation}
+    
+\begin{equation}
+    =\frac{\frac{K_{I}}{s}(\frac{K}{s^{2}T+(KK_{D}+1)s+KK_{P}})}{1+\frac{KK_{I}}{s(s^{2}T+(KK_{D}+1)s+KK_{P})}}\cdot r+\frac{\frac{K}{s^{2}T+(KK_{D}+1)s+KK_{P}}}{1+\frac{KK_{I}}{s(s^{2}T+(KK_{D}+1)s+KK_{P})}}\cdot d
+\end{equation}
+
+    
+\begin{equation}
+    y=\frac{KK_{I}}{s^{3}T+(KK_{D}+1)s^{2}+KK_{P}s+KK_{I}}\cdot r+\frac{Ks}{s^{3}T+(KK_{D}+1)s^{2}+KK_{P}s+KK_{I}}\cdot d
+\end{equation}
+		
+	
+
+\end{document}

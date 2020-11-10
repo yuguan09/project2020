@@ -1,0 +1,109 @@
+\documentclass[xelatex,ja=standard,jafont=noto]{bxjsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{verbatim}
+\tikzstyle{block} = [draw, fill=white, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Ex\documentclass{article}
+	\usepackage{CJKutf8}
+	\usepackage{amsmath}
+	\usepackage{amsthm}
+	\usepackage{amssymb}
+	ample}
+\newtheorem{definition}{Definition}
+
+\def\ds{\displaystyle}
+\def\ul{\underline}
+	\title{計算レポート4	}
+	\author{bq18026\\YBIOYO\footnote{ヴィジュネル暗号を使った} }
+	\date{11.8，2020}
+	
+	
+\begin{document}
+\maketitle
+
+\section{相対論的な運動エネルギーの導出}
+
+相対論的運動方程式は
+\begin{equation}
+    \mathbb{F}=\frac{d}{dt}(m(v)\mathbb{V})
+\end{equation}
+
+ただし
+
+\begin{equation}
+    m(v)=\frac{m_{0}}{\sqrt{1-(\frac{v}{c})^{2}}}
+\end{equation}
+
+微小な仕事は力と変位ベクトルの内積で、結果的にKという量を表すことができる．
+
+\begin{equation}
+    dW=\mathbb{F}\cdot\mathbb{R}=dK
+\end{equation}
+
+両辺をdtを割ると
+
+\begin{equation}
+    \frac{dW}{dt}=\frac{\mathbb{F}\cdot\mathbb{R}}{dt}=\frac{dK}{dt}
+\end{equation}
+
+続いて式1を式４に代入して
+
+\begin{equation}
+    \frac{dW}{dt}=\frac{d}{dt}(m(v)\mathbb{V})\cdot\mathbb{V}=(m^{'}(v)\mathbb{V}+m(v)\mathbb{V}^{'})\cdot\mathbb{V}
+\end{equation}
+
+\begin{equation}
+    =m^{'}(v)\mathbb{V}\cdot\mathbb{V}+m(v)\mathbb{V}^{'}\cdot\mathbb{V}=m^{'}(v)v^{2}+m(v)v^{'}v
+\end{equation}
+
+m(v)について、
+
+\begin{equation}
+    m^{'}(v)=m_{0}\frac{vv^{'}}{c^{2}}(1-(\frac{v}{c})^{2})^{-\frac{3}{2}}
+\end{equation}
+
+これを式６に代入すると
+
+\begin{equation}
+    m_{0}\frac{v^{3}v^{'}}{c^{2}}(1-(\frac{v}{c})^{2})^{-\frac{3}{2}}+m_{0}vv^{'}(1-(\frac{v}{c})^{2})^{-\frac{1}{2}}
+\end{equation}
+
+\begin{equation}
+=m_{0}vv^{'}(1-(\frac{v}{c})^{2})^{-\frac{3}{2}}[\frac{v^{2}}{c^{2}}+(1-(\frac{v}{c})^{2})]    
+\end{equation}
+
+\begin{equation}
+    =m_{0}vv^{'}(1-(\frac{v}{c})^{2})^{-\frac{3}{2}}
+\end{equation}
+
+式４と式７によって、
+
+\begin{equation}
+    \frac{dK}{dt}=\frac{d}{dt}m(v)c^{2}
+\end{equation}
+
+なので、
+
+\begin{equation}
+    K=m(v)c^{2}
+\end{equation}
+\end{document}
